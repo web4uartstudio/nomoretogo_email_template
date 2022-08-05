@@ -1,5 +1,7 @@
-import { footerComponent, amazonFreshBlock } from 'nmtg-template-mailerlite-outertemplate';
+import { footerComponent, amazonFreshBlock, supportComponent  } from 'nmtg-template-mailerlite-outertemplate';
+import { SocialPanelComponent } from 'nmtg-template-mailerlite-miscellaneous';
 
+import Factory from './factory';
 import createComponent from './createComponentUniversal';
 
 import socialsLinksParams from './socialLinksData';
@@ -17,6 +19,27 @@ const imagePath = 'https://raw.githubusercontent.com/LLazyEmail/nomoretogo_email
 
 
 
+var params = {
+  topTitle: '123',
+  topLinkHref: '123',
+  topLinkId: '123',
+  topLinkText: '123',
+  bottomTitle: '123',
+  bottomLinkHref: '123',
+  bottomLinkId: '123',
+  bottomLinkText: '123',
+  bottomTextContact: '123',
+};
+
+
+
+
+
+  
+
+
+
+
 /* ******************** DATA END **************************************** */
 
 /* ******************** CREATE CONTENT START ****************************** */
@@ -30,13 +53,28 @@ try {
   );
 
 
+  const factory = new Factory(supportComponent, params);
+  const supportBlock = factory.create();
+
+  // console.log(supportBlock);
+  
+  const socialMedia = createComponent(SocialPanelComponent, socialsLinksParams);
+
+  //  console.log(socialMedia);
+  
+  
   const config = {
-    socialLinks: socialsLinksParams,
-    amazonFreshBlock: imageBlock
+    socialPanel: socialMedia,
+    amazonFreshBlock: imageBlock,
+    supportBlock: supportBlock
   }
 
 
   result = createComponent(footerComponent, config);
+
+  // console.log(result);
+
+
 } catch (error) {
   console.log(error.message);
 }

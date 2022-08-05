@@ -7,14 +7,18 @@ import displayHead from '../display/displayHead';
 
 
 import displayContentMainTableWrap from '../display/displayContentMainTableWrap';
+
+
+
 import displayContent from '../display/displayContent';
+
 
 
 import mainComponent from '../components/mainComponent';
 
 //----------
 import displayInstruction from '../display/displayInstruction';
-import displaySupportContact from '../display/displaySupportContact';
+// import displaySupportContact from '../display/displaySupportContact';
 
 
 
@@ -40,12 +44,15 @@ if (displayContent == null) {
 if (displayInstruction == null) {
   error = 'Empty displayInstruction';
 }
-if (displaySupportContact == null) {
-  error = 'Empty displaySupportContact';
-}
+
+// TODO if we want to keep those checks, we need to move it into footer display probably
+// if (displaySupportContact == null) {
+//   error = 'Empty displaySupportContact';
+// }
 // if (displayImageAfterSupportComponent == null) {
 //   error = 'Empty displayImageAfterSupportComponent';
 // }
+
 if (displayFooter == null) {
   error = 'Empty displayFooter';
 }
@@ -53,21 +60,22 @@ if (displayFooter == null) {
 
 /* ******************** CREATE CONTENT START ****************************** */
 if (error == '') {
-  const bodyContentParams = `
-    ${displayContentMainTableWrap}
-    ${displayContent}
-    ${displayInstruction}
-    ${displaySupportContact}
-    ${displayFooter}`;
+  
+  // const bodyContentParams = `
+  //   ${displayContentMainTableWrap}
+  //   ${displayContent}
+  //   ${displayInstruction}
 
-  const BodyComponentRes = createComponent(bodyComponent, bodyContentParams);
+  //   ${displayFooter}`;
 
-  const cfg = {
-    head: displayHead,
-    body: BodyComponentRes
-  };
+  // const BodyComponentRes = createComponent(bodyComponent, bodyContentParams);
 
-  MainHTMLTemplate = createComponent(mainComponent, cfg)
+  // const cfg = {
+  //   head: displayHead,
+  //   body: BodyComponentRes
+  // };
+
+  // MainHTMLTemplate = createComponent(mainComponent, cfg)
 
   // result = `${displayHead}${BodyComponentRes}`;
 
